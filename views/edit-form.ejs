@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-2">
+            <h2>Edit Contact Form</h2>
+
+            <% if (typeof errors != 'undefined') { %>
+            <div class="alert alert-danger" role="alert">
+                <ul>
+                    <% errors.forEach(err => { %>
+                    <li><%= err.msg %> </li>
+                    <% }) %>
+                </ul>
+            </div>
+            <% } %>
+
+            <form action="/contact?_method=PUT" method="post">
+                <input type="hidden" name="_id" value="<%= contact._id %>">
+                <input type="hidden" name="oldNama" value="<%= contact.nama || contact.oldNama %>">
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Nama</label>
+                    <input type="text" name="nama" class="form-control" id="nama" aria-describedby="emailHelp"
+                        value="<%= contact.nama %>">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
+                        value="<%= contact.email %>">
+                </div>
+                <div class="mb-3">
+                    <label for="noTelp" class="form-label">Phone Number</label>
+                    <input type="text" name="noTelp" class="form-control" id="noTelp" aria-describedby="emailHelp"
+                        value="<%= contact.noTelp %>">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
